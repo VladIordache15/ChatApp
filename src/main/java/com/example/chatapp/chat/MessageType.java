@@ -1,2 +1,8 @@
-package com.example.chatapp.chat;public enum MessageType {
+package com.example.chatapp.chat;
+
+public enum MessageType {
+
+    CHAT,
+    JOIN,
+    LEAVE
 }
