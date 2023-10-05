@@ -23,23 +23,18 @@ public class ChatController {
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
-    public void sendMessage(@Payload ChatMessage chatMessage){
+    public ChatMessage  sendMessage(@Payload ChatMessage chatMessage){
         messageRepository.save(chatMessage);
 
         sendUpdatedMessages();
+        return chatMessage;
     }
 
     private void sendUpdatedMessages() {
         List<String> allMessages = messageRepository.findAllMessages();
         simpMessagingTemplate.convertAndSend("/topic/data.response", allMessages);
+
     }
-
-//    @MessageMapping("/chat.getMessages")
-//    @SendTo("/topic/data.response")
-//    public List<String> getAllMessages(){
-//        return messageRepository.findAllMessages();
-//    }
-
 
 
     @MessageMapping("/chat.addUser")

@@ -44,7 +44,7 @@ function onConnected() {
         JSON.stringify({ sender: username, type: 'JOIN' })
     )
     console.log('aici')
-    stompClient.send("/app/chat.getMessages", {}, JSON.stringify({ sender: username, type: 'JOIN' }));
+    // stompClient.send("/app/chat.getMessages", {}, JSON.stringify({ sender: username, type: 'JOIN' }));
 
     stompClient.subscribe('/topic/data.response', function (response) {
         var responseData = JSON.parse(response.body);
